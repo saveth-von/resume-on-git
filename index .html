@@ -6,188 +6,323 @@
     <title>VONG SAVETH - Web Developer Resume</title>
     <style>
         :root {
-            --bg-color: #f4f6f9;
-            --sidebar-bg: #34495e;
-            --text-dark: #2c3e50;
-            --text-light: #ffffff;
-            --accent-color: #2ecc71;
+            --bg-color: #f0f2f5;
+            --main-white: #ffffff;
+            --primary-dark: #1e293b;
+            --secondary-dark: #334155;
+            --accent-color: #0284c7;
+            --text-main: #334155;
+            --text-light: #64748b;
+            --border-color: #e2e8f0;
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+        }
+        
         body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
             background-color: var(--bg-color);
-            color: var(--text-dark);
+            color: var(--text-main);
             line-height: 1.6;
             display: flex;
             justify-content: center;
-            padding: 20px;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px;
         }
+        
         .resume-container {
-            background: #fff;
+            background: var(--main-white);
             width: 100%;
-            max-width: 900px;
-            display: flex;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            border-radius: 8px;
+            max-width: 950px;
+            display: grid;
+            grid-template-columns: 1fr;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border-radius: 12px;
             overflow: hidden;
         }
-        /* Sidebar styling */
+
+        /* Top Header Styling */
+        .resume-header {
+            background-color: var(--primary-dark);
+            color: var(--main-white);
+            padding: 40px 50px;
+            border-bottom: 5px solid var(--accent-color);
+        }
+
+        .header-title h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            text-transform: uppercase;
+            line-height: 1.1;
+            margin-bottom: 5px;
+        }
+
+        .header-title .subtitle {
+            font-size: 1.25rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Core Layout Grid */
+        .resume-body {
+            display: grid;
+            grid-template-columns: 35% 65%;
+        }
+        
+        /* Left Column (Sidebar) */
         .sidebar {
-            background-color: var(--sidebar-bg);
-            color: var(--text-light);
-            width: 35%;
-            padding: 40px 30px;
+            background-color: #f8fafc;
+            border-right: 1px solid var(--border-color);
+            padding: 40px;
         }
-        .profile-img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: #ddd; /* 任意のプロフィール画像URLを後から設定可能 */
-            margin-bottom: 30px;
-            border: 3px solid var(--accent-color);
-        }
+        
         .sidebar h2 {
-            font-size: 1.2rem;
+            font-size: 1rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-bottom: 15px;
-            border-bottom: 2px solid rgba(255,255,255,0.2);
-            padding-bottom: 5px;
-            color: var(--accent-color);
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
         }
-        .sidebar-section { margin-bottom: 35px; }
-        .contact-info p, .skills-list li, .lang-list li {
+
+        .sidebar h2::after {
+            content: '';
+            flex-grow: 1;
+            margin-left: 10px;
+            height: 2px;
+            background-color: var(--accent-color);
+            opacity: 0.3;
+        }
+        
+        .sidebar-section { 
+            margin-bottom: 35px; 
+        }
+
+        .sidebar-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .contact-info p {
             font-size: 0.9rem;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+
+        .contact-info strong {
+            color: var(--secondary-dark);
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 2px;
+        }
+
+        .skills-list, .lang-list {
             list-style: none;
         }
-        /* Main Content styling */
+        
+        .skills-list li, .lang-list li {
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+
+        .skills-list strong, .lang-list strong {
+            color: var(--secondary-dark);
+            display: block;
+            margin-bottom: 2px;
+        }
+        
+        /* Right Column (Main Content) */
         .main-content {
-            width: 65%;
-            padding: 40px;
+            padding: 40px 50px;
         }
-        .header-title h1 {
-            font-size: 2.5rem;
-            color: var(--sidebar-bg);
-            text-transform: uppercase;
-            line-height: 1.1;
-        }
-        .header-title .subtitle {
-            font-size: 1.2rem;
-            color: var(--accent-color);
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
+        
         .about-text {
-            font-size: 0.95rem;
-            margin-bottom: 35px;
+            font-size: 1rem;
+            margin-bottom: 40px;
+            color: var(--text-main);
             text-align: justify;
         }
-        .main-section { margin-bottom: 35px; }
+        
+        .main-section { 
+            margin-bottom: 35px; 
+        }
+
+        .main-section:last-child {
+            margin-bottom: 0;
+        }
+        
         .main-section h2 {
-            font-size: 1.4rem;
-            color: var(--sidebar-bg);
-            border-bottom: 2px solid var(--sidebar-bg);
-            padding-bottom: 5px;
+            font-size: 1.3rem;
+            color: var(--primary-dark);
+            letter-spacing: 0.5px;
+            padding-bottom: 8px;
             margin-bottom: 20px;
             text-transform: uppercase;
+            position: relative;
         }
-        .job-item, .edu-item { margin-bottom: 20px; }
-        .job-title, .edu-title {
-            font-weight: bold;
-            font-size: 1.05rem;
+
+        .main-section h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--accent-color);
         }
-        .duration {
-            font-size: 0.85rem;
-            color: #7f8c8d;
+        
+        .job-item, .edu-item { 
+            margin-bottom: 24px; 
+        }
+
+        .job-item:last-child, .edu-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
             margin-bottom: 5px;
         }
-        .description { font-size: 0.95rem; }
         
-        /* Responsive View */
+        .job-title, .edu-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--secondary-dark);
+        }
+        
+        .duration {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            white-space: nowrap;
+            margin-left: 15px;
+        }
+        
+        .description { 
+            font-size: 0.95rem; 
+            color: var(--text-light);
+        }
+        
+        /* Responsive Layout for Mobile Devices */
         @media (max-width: 768px) {
-            .resume-container { flex-direction: column; }
-            .sidebar { width: 100%; padding: 30px 20px; }
-            .main-content { width: 100%; padding: 30px 20px; }
+            body {
+                padding: 10px;
+            }
+            .resume-header {
+                padding: 30px 20px;
+            }
+            .header-title h1 {
+                font-size: 2rem;
+            }
+            .resume-body { 
+                grid-template-columns: 1fr; 
+            }
+            .sidebar { 
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+                padding: 30px 20px; 
+            }
+            .main-content { 
+                padding: 30px 20px; 
+            }
+            .item-header {
+                flex-direction: column;
+            }
+            .duration {
+                margin-left: 0;
+                margin-top: 2px;
+            }
         }
     </style>
 </head>
 <body>
 
 <div class="resume-container">
-    <!-- 左側サイドバー -->
-    <div class="sidebar">
-        <!-- プロフィール画像（必要に応じてsrcを指定） -->
-        <div class="profile-img">
-            <img src="face.png" alt="Picture Profile" weight="150%" height="130%">
-        </div>
-        
-        <div class="sidebar-section contact-info">
-            <h2>Contact</h2>
-            <p><strong>Email:</strong> Saveth.vong.1983@gmail.com</p>
-            <p><strong>Address:</strong> Hyogo prefecture, Japan</p>
-        </div>
-
-        <div class="sidebar-section">
-            <h2>Technical Skills</h2>
-            <ul class="skills-list">
-                <li><strong>Back-end:</strong> PHP, Java, Program Logic, Bug Fixing, API Maintenance</li>
-                <li><strong>Database:</strong> A5:SQL Mk-2, MySQL, Database Management</li>
-                <li><strong>Tools:</strong> Subversion (SVN), Git, VS Code, Slack</li>
-            </ul>
-        </div>
-
-        <div class="sidebar-section">
-            <h2>Language</h2>
-            <ul class="lang-list">
-                <li><strong>English:</strong> Intermediate</li>
-                <li><strong>Japanese:</strong> Basic Daily Conversation</li>
-                <li><strong>Khmer:</strong> Native</li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- 右側メインコンテンツ -->
-    <div class="main-content">
+    <!-- Top Header -->
+    <header class="resume-header">
         <div class="header-title">
             <h1>Vong Saveth</h1>
             <p class="subtitle">Web Developer</p>
         </div>
-        
-        <p class="about-text">
-            Experienced 2 years as Back-end Developer and former English language Educator with 19 years of experience. Since transitioning to software engineering in 2023, I have specialized in server-side logic, bug fixing, and database management using A5:SQL Mk-2. A long-term resident of Japan (since 2016), I combine technical proficiency with strong Japanese work ethics and professional fluency in English.
-        </p>
+    </header>
 
-        <div class="main-section">
-            <h2>Work Experience</h2>
-            <div class="job-item">
-                <p class="job-title">Back-end Developer</p>
-                <p class="duration">2023 - Present</p>
-                <p class="description">Focus on server-side development, ensuring efficient and reliable system logic.</p>
+    <!-- Lower Body -->
+    <div class="resume-body">
+        <!-- Left Column -->
+        <aside class="sidebar">
+            <div class="sidebar-section contact-info">
+                <h2>Contact</h2>
+                <p><strong>Email</strong>Saveth.vong.1983@gmail.com</p>
+                <p><strong>Address</strong>Hyogo prefecture, Japan</p>
             </div>
-            <div class="job-item">
-                <p class="job-title">English Language Teacher</p>
-                <p class="duration">2005 - 2023 (Cambodia & Japan)</p>
-            </div>
-        </div>
 
-        <div class="main-section">
-            <h2>Education</h2>
-            <div class="edu-item">
-                <p class="edu-title">Back-end Web Development Specialization</p>
-                <p class="duration">2023</p>
+            <div class="sidebar-section">
+                <h2>Technical Skills</h2>
+                <ul class="skills-list">
+                    <li><strong>Back-end</strong>PHP, Java, Program Logic, Bug Fixing, API Maintenance</li>
+                    <li><strong>Database</strong>A5:SQL Mk-2, MySQL, Database Management</li>
+                    <li><strong>Tools</strong>Subversion (SVN), Git, VS Code, Slack</li>
+                </ul>
             </div>
-            <div class="edu-item">
-                <p class="edu-title">Bachelor Degree of English Literature</p>
-                <p class="duration">2005</p>
-            </div>
-            <div class="edu-item">
-                <p class="edu-title">Graduate High School</p>
-                <p class="duration">2002</p>
-            </div>
-        </div>
-    </div>
-</div>
 
-</body>
-</html>
+            <div class="sidebar-section">
+                <h2>Language</h2>
+                <ul class="lang-list">
+                    <li><strong>English</strong>Intermediate</li>
+                    <li><strong>Japanese</strong>Basic Daily Conversation</li>
+                    <li><strong>Khmer</strong>Native</li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Right Column -->
+        <main class="main-content">
+            <p class="about-text">
+                Experienced 2 years as Back-end Developer and former English language Educator with 19 years of experience. Since transitioning to software engineering in 2023, I have specialized in server-side logic, bug fixing, and database management using A5:SQL Mk-2. A long-term resident of Japan (since 2016), I combine technical proficiency with strong Japanese work ethics and professional fluency in English.
+            </p>
+
+            <div class="main-section">
+                <h2>Work Experience</h2>
+                <div class="job-item">
+                    <div class="item-header">
+                        <p class="job-title">Back-end Developer</p>
+                        <p class="duration">2023 - Present</p>
+                    </div>
+                    <p class="description">Focus on server-side development, ensuring efficient and reliable system logic.</p>
+                </div>
+                <div class="job-item">
+                    <div class="item-header">
+                        <p class="job-title">English Language Teacher</p>
+                        <p class="duration">2005 - 2023 (Cambodia & Japan)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-section">
+                <h2>Education</h2>
+                <div class="edu-item">
+                    <div class="item-header">
+                        <p class="edu-title">Back-end Web Development Specialization</p>
+                        <p class="duration">2023</p>
+                    </div>
+                </div>
+                <div class="edu-item">
+                    <div class="item-header">
+                        <p class="edu-title">Bachelor Degree of English Literature</p>
+                        <p class="duration">2005</p>
+                    </div>
+                </div>
+                <div class="edu-item">
+                    <div class="item-header">
