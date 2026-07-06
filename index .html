@@ -6,13 +6,14 @@
     <title>VONG SAVETH - Web Developer Resume</title>
     <style>
         :root {
-            --bg-color: #f0f2f5;
+            --bg-color: #f1f5f9;
             --main-white: #ffffff;
-            --primary-dark: #1e293b;
-            --secondary-dark: #334155;
-            --accent-color: #0284c7;
+            --primary-dark: #0f172a;
+            --sidebar-bg: #1e293b; /* 濃いスレート色でメインと完全に分離 */
+            --accent-color: #38bdf8; /* 暗い背景で見えやすい明るいブルー */
             --text-main: #334155;
-            --text-light: #64748b;
+            --text-muted: #64748b;
+            --text-sidebar: #e2e8f0;
             --border-color: #e2e8f0;
         }
         
@@ -40,7 +41,7 @@
             max-width: 950px;
             display: grid;
             grid-template-columns: 1fr;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
             border-radius: 12px;
             overflow: hidden;
         }
@@ -49,8 +50,8 @@
         .resume-header {
             background-color: var(--primary-dark);
             color: var(--main-white);
-            padding: 40px 50px;
-            border-bottom: 5px solid var(--accent-color);
+            padding: 45px 50px;
+            border-bottom: 4px solid var(--accent-color);
         }
 
         .header-title h1 {
@@ -59,7 +60,7 @@
             letter-spacing: -0.5px;
             text-transform: uppercase;
             line-height: 1.1;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
         }
 
         .header-title .subtitle {
@@ -76,19 +77,19 @@
             grid-template-columns: 35% 65%;
         }
         
-        /* Left Column (Sidebar) */
+        /* Left Column (Sidebar) - Separated Color */
         .sidebar {
-            background-color: #f8fafc;
-            border-right: 1px solid var(--border-color);
-            padding: 40px;
+            background-color: var(--sidebar-bg);
+            color: var(--text-sidebar);
+            padding: 40px 35px;
         }
         
         .sidebar h2 {
-            font-size: 1rem;
+            font-size: 0.95rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
-            color: var(--primary-dark);
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+            color: var(--accent-color);
             display: flex;
             align-items: center;
         }
@@ -97,13 +98,13 @@
             content: '';
             flex-grow: 1;
             margin-left: 10px;
-            height: 2px;
+            height: 1px;
             background-color: var(--accent-color);
-            opacity: 0.3;
+            opacity: 0.4;
         }
         
         .sidebar-section { 
-            margin-bottom: 35px; 
+            margin-bottom: 40px; 
         }
 
         .sidebar-section:last-child {
@@ -112,17 +113,18 @@
         
         .contact-info p {
             font-size: 0.9rem;
-            margin-bottom: 12px;
-            color: var(--text-main);
+            margin-bottom: 15px;
+            line-height: 1.5;
         }
 
-        .contact-info strong {
-            color: var(--secondary-dark);
+        .contact-info strong, .skills-list strong, .lang-list strong {
+            color: var(--main-white);
             display: block;
             font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-bottom: 2px;
+            margin-bottom: 4px;
+            opacity: 0.9;
         }
 
         .skills-list, .lang-list {
@@ -131,30 +133,25 @@
         
         .skills-list li, .lang-list li {
             font-size: 0.9rem;
-            margin-bottom: 12px;
-            color: var(--text-main);
-        }
-
-        .skills-list strong, .lang-list strong {
-            color: var(--secondary-dark);
-            display: block;
-            margin-bottom: 2px;
+            margin-bottom: 15px;
+            line-height: 1.5;
         }
         
         /* Right Column (Main Content) */
         .main-content {
-            padding: 40px 50px;
+            padding: 45px 50px;
+            background-color: var(--main-white);
         }
         
         .about-text {
-            font-size: 1rem;
+            font-size: 0.95rem;
             margin-bottom: 40px;
             color: var(--text-main);
             text-align: justify;
         }
         
         .main-section { 
-            margin-bottom: 35px; 
+            margin-bottom: 40px; 
         }
 
         .main-section:last-child {
@@ -162,11 +159,11 @@
         }
         
         .main-section h2 {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             color: var(--primary-dark);
             letter-spacing: 0.5px;
             padding-bottom: 8px;
-            margin-bottom: 20px;
+            margin-bottom: 22px;
             text-transform: uppercase;
             position: relative;
         }
@@ -176,9 +173,9 @@
             position: absolute;
             left: 0;
             bottom: 0;
-            width: 40px;
+            width: 35px;
             height: 3px;
-            background-color: var(--accent-color);
+            background-color: #0284c7; /* メイン側のアクセントブルー */
         }
         
         .job-item, .edu-item { 
@@ -193,56 +190,54 @@
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
         }
         
         .job-title, .edu-title {
             font-weight: 700;
-            font-size: 1.1rem;
-            color: var(--secondary-dark);
+            font-size: 1.05rem;
+            color: var(--primary-dark);
         }
         
         .duration {
             font-size: 0.85rem;
             font-weight: 600;
-            color: var(--accent-color);
+            color: #0284c7;
             white-space: nowrap;
             margin-left: 15px;
         }
         
         .description { 
             font-size: 0.95rem; 
-            color: var(--text-light);
+            color: var(--text-muted);
         }
         
-        /* Responsive Layout for Mobile Devices */
+        /* Responsive Layout */
         @media (max-width: 768px) {
             body {
                 padding: 10px;
             }
             .resume-header {
-                padding: 30px 20px;
+                padding: 35px 25px;
             }
             .header-title h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             .resume-body { 
                 grid-template-columns: 1fr; 
             }
             .sidebar { 
-                border-right: none;
-                border-bottom: 1px solid var(--border-color);
-                padding: 30px 20px; 
+                padding: 35px 25px; 
             }
             .main-content { 
-                padding: 30px 20px; 
+                padding: 35px 25px; 
             }
             .item-header {
                 flex-direction: column;
             }
             .duration {
                 margin-left: 0;
-                margin-top: 2px;
+                margin-top: 4px;
             }
         }
     </style>
@@ -260,7 +255,7 @@
 
     <!-- Lower Body -->
     <div class="resume-body">
-        <!-- Left Column -->
+        <!-- Left Column (Dark Sidebar) -->
         <aside class="sidebar">
             <div class="sidebar-section contact-info">
                 <h2>Contact</h2>
@@ -287,7 +282,7 @@
             </div>
         </aside>
 
-        <!-- Right Column -->
+        <!-- Right Column (White Main Content) -->
         <main class="main-content">
             <p class="about-text">
                 Experienced 2 years as Back-end Developer and former English language Educator with 19 years of experience. Since transitioning to software engineering in 2023, I have specialized in server-side logic, bug fixing, and database management using A5:SQL Mk-2. A long-term resident of Japan (since 2016), I combine technical proficiency with strong Japanese work ethics and professional fluency in English.
